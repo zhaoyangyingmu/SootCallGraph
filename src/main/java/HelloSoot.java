@@ -8,7 +8,7 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 public class HelloSoot {
-    private static String PROJECT_ROOT = "G:\\Programming\\SootCallGraph\\";
+    private static String PROJECT_ROOT = "G:\\Programming\\SootCallGraph\\"; // project root
     private static String JAVA_FILE_PATH = PROJECT_ROOT + "src\\main\\java\\entity";// java file directory
     private static String CLASS_FILE_PATH = PROJECT_ROOT + "target\\classes\\entity"; // class file directory
     private static String JRE_LIB_PATH = "F:\\Program Files\\Java\\jdk1.8.0_161\\jre\\lib\\"; // JDK jre lib path
@@ -64,8 +64,8 @@ public class HelloSoot {
     }
 
     public static void main(String[] args) {
-        setSootClassPath();//设置classpath
-        setOptions();//设置soot的选项
+        setSootClassPath();
+        setOptions();
 
         HelloSoot s = new HelloSoot();
         s.getClassUnderDir();
