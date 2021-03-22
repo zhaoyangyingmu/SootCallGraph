@@ -4,19 +4,17 @@ import soot.SootMethod;
 import soot.SourceLocator;
 import soot.options.Options;
 
-import java.io.File;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
 public class HelloSoot {
-    private String apiPath = "G:\\Programming\\SootCallGraph\\src\\main\\java\\entity";//应用类的路径
-    private Set apiClasses;
-
+    private static String PROJECT_ROOT = "G:\\Programming\\SootCallGraph\\";
+    private static String JAVA_FILE_PATH = PROJECT_ROOT + "src\\main\\java\\entity";// java file directory
+    private static String CLASS_FILE_PATH = PROJECT_ROOT + "target\\classes\\entity"; // class file directory
+    private static String JRE_LIB_PATH = "F:\\Program Files\\Java\\jdk1.8.0_161\\jre\\lib\\"; // JDK jre lib path
     public void getClassUnderDir() {
-        apiClasses = new LinkedHashSet<String>();
-        for (String clzName: SourceLocator.v().getClassesUnder(apiPath)) {
+        for (String clzName: SourceLocator.v().getClassesUnder(JAVA_FILE_PATH)) {
             System.out.printf("api class: %s\n", clzName);
-            //加载要处理的类设置为应用类，并加载到soot环境Scene中
             Scene.v().loadClass(clzName, SootClass.BODIES).setApplicationClass();
         }
     }
@@ -59,11 +57,10 @@ public class HelloSoot {
     }
 
     private static void setSootClassPath() {
-        System.setProperty("soot.class.path", ".;" +
-                "G:\\Programming\\SootCallGraph\\target\\classes\\entity;" +
-                "F:\\Program Files\\Java\\jdk1.8.0_161\\jre\\lib\\jce.jar;" +
-                "F:\\Program Files\\Java\\jdk1.8.0_161\\jre\\lib\\rt.jar;" +
-                "G:\\Programming\\SootCallGraph\\src\\main\\java\\entity");
+        System.setProperty("soot.class.path", ".;" + CLASS_FILE_PATH + ";" +
+                JRE_LIB_PATH + "jce.jar;" +
+                JRE_LIB_PATH + "rt.jar;" +
+                JAVA_FILE_PATH);
     }
 
     public static void main(String[] args) {
