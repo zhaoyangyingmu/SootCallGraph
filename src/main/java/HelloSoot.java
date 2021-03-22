@@ -13,7 +13,7 @@ public class HelloSoot {
     private static String CLASS_FILE_PATH = PROJECT_ROOT + "target\\classes\\entity"; // class file directory
     private static String JRE_LIB_PATH = "F:\\Program Files\\Java\\jdk1.8.0_161\\jre\\lib\\"; // JDK jre lib path
     public void getClassUnderDir() {
-        for (String clzName: SourceLocator.v().getClassesUnder(JAVA_FILE_PATH)) {
+        for (String clzName: SourceLocator.v().getClassesUnder(CLASS_FILE_PATH)) {
             System.out.printf("api class: %s\n", clzName);
             Scene.v().loadClass(clzName, SootClass.BODIES).setApplicationClass();
         }
